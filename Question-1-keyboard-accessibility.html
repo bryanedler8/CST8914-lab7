@@ -24,8 +24,14 @@ body {
 a{
   color: #006b3a;
 }
-main a{
+/*this will make navigation impossible for keyboard users.*/
+/*main a{
   outline: none;
+}*/
+/*fixig focus indicators for links within main*/
+main a:focus {
+  outline: 2px solid #ff6600;
+  outline-offset: 2px;
 }
 h2 {
   margin-top: 0;
