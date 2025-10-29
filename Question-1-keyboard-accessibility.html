@@ -24,11 +24,11 @@ body {
 a{
   color: #006b3a;
 }
-/*this will make navigation impossible for keyboard users.*/
-/*main a{
-  outline: none;
-}*/
-/*fixig focus indicators for links within main*/
+        /*this will make navigation impossible for keyboard users.*/
+        /*main a{
+          outline: none;
+        }*/
+        /*fixing focus indicators for links within main*/
 main a:focus {
   outline: 2px solid #ff6600;
   outline-offset: 2px;
@@ -246,11 +246,13 @@ article p {
     <div class="side-by-side">
       <div class="column">
         <div class="tier-header">
-          <h2 tabindex="0">In the news</h2>
+<!-- removing all unnecessary tabindex attributes -->
+          <h2>In the news</h2>
         </div>
         <article>
           <h3 class="headline">Bee wonders if maybe everyone else is a drone and he's the only one who has it "figured out."</h3>
-          <p><a href="#" tabindex="1"><b>Read More</b></a></p>
+<!-- removing all unnecessary tabindex attributes -->
+          <p><a href="#"><b>Read More</b></a></p>
           <img src="https://github.com/udacity/ud891/blob/gh-pages/lesson2-focus/02-dom-order/images/bee.jpg?raw=true" alt="A bee on top of a flower" />
         </article>
       </div>
