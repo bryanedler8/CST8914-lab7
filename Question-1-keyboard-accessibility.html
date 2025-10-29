@@ -221,14 +221,7 @@ article p {
       </nav>
     </div>
   </header>
-  <div class="newsletter">
-    <div class="container">
-      <h3>Like the Funion? Consider joining our newsletter!</h3>
-      <input type="text">
-      <button type="button" onclick="getFocus()">Sign up</button></div>
-      
-    </div>
-  </div>
+
   <main class="container">
     <h2 class="offscreen">Top story</h2>
     <article class="main-story">
@@ -299,6 +292,29 @@ article p {
   <footer>
   </footer>
   -->
+  <!--adding footer and placing the div "newsletter inside it" -->
+  <footer>
+    <form>
+    <div class="newsletter">
+    <div class="container">
+      <h3>Like the Funion? Consider joining our newsletter!</h3>
+  <!-- creating a form for <input> -->
+      
+  <!-- creating a lable -->
+        <label for="email">Email address</label>
+  <!-- changing type into email, adding a placeholder, making it required -->
+        <input type="email" id="email" name="email" placeholder="write your email" required>
+  <!-- using onclick  -->
+        <button type="button" onclick="getFocus()">Sign up</button>
+      
+      
+      
+    </div>
+      
+<!-- this looks extra </div> -->
+  </div>
+  </form>
+  </footer>
   
   <script>
     function getFocus() {
