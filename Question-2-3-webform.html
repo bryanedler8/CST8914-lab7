@@ -23,20 +23,58 @@
     
     fieldset ul {
       margin: 0;
-    }</style>
+    }
+
+/*https://v1.tailwindcss.com/docs/screen-readers
+for improving accessibility with screen readers*/
+    .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+    }
+
+  </style>
     </head>
     <body>
         <h1>Feedback form</h1>
+
+<!-- Screen reader announcement for form status -->
+    <div id="form-status" aria-live="polite" aria-atomic="true" class="sr-only"></div>
     <form>
+<!-- Announce form instructions for screen readers -->
+      <div id="form-instructions" class="sr-only">
+        This form has required fields marked with an asterisk  
+        Please review any error messages when submitting.
+      </div>
+
+
+
 <!-- The <fieldset> tag is used to group related elements in a form:
 https://www.w3schools.com/tags/tag_fieldset.asp -->
       <fieldset>
         <legend>Tell us about yourself</legend>
         <div class="control">
   <!-- specifying label:  -->
-          <label for="name">Full name <span class="required">*</span></label>
-  <!-- Add required attributes -->
-          <input id="name" name="name" type="text" required aria-required="true"/>
+          <label for="name">Full name <span class="required">*</span>
+  <!-- adding a <span> for screen reader use-->
+            <span class="sr-only">Required field</span>
+          </label>
+  <!--  adding a <div> so that the screen reader can read instruction on how to fill the input with the help of aria-describedby atribute -->
+  <!-- adding required attribute -->
+          <input id="name" name="name" type="text" required aria-required="true"
+
+          aria-describedby="name-instructions name-error"/>
+          <div id="name-instructions" class="instructions sr-only">
+                Please enter your full name as it appears on official documents.
+          </div>
+          <div id="name-error" class="error-message" role="alert" aria-live="assertive">
+          </div>
         </div>
         <div class="control">
           <label>Biography</label>
@@ -48,26 +86,63 @@ https://www.w3schools.com/tags/tag_fieldset.asp -->
       <fieldset>
  <!-- replacing div with <legend> to work with <fieldset> and adding the atribute required-->
           <legend>Gender <span class="required">*</span></legend>
-          <div class="control">
-            <input id="gender_male" name="gender" type="radio" value="male" required>
-    <!-- specifying label:  -->
-            <label for="gender_male">Male</label>
-          </div>
 
-          <div class="control">
-            <input id="gender_female" name="gender" type="radio" value="female" required>
-    <!-- specifying label:  -->
-            <label for="gender_female">Female</label>
-          </div>
+          <!-- <div class="control"> -->
+
+        <!-- List provides better semantic structure -->
+        <!-- adding the atribute required & aria-describedby="gender-error" for all radio elements -->
+            <ul aria-labelledby="gender-legend">
+                <li>
+                  <input id="gender_male" name="gender" type="radio" value="male" required 
+                  aria-describedby="gender-error">
+       <!-- specifying label:  -->
+                  <label for="gender_male">Male</label>
+                </li>
+                <li>
+                  <input id="gender_female" name="gender" type="radio" value="female" 
+                  required
+                  aria-describedby="gender-error">
+        <!-- specifying label:  -->
+                    <label for="gender_female">Female</label>
+                </li>
+        <!-- i was not sure of this, but i thought to add more radios to include others and people who prefer not to answer -->
+                <li>
+                    <input id="gender_other" name="gender" type="radio" value="other" 
+                    required
+                    aria-describedby="gender-error">
+        <!-- specifying label:  -->
+                    <label for="gender_other">Other</label>
+                </li>
+                <li>
+                    <input id="gender_prefer_not" name="gender" type="radio" value="prefer_not" 
+                    required
+                    aria-describedby="gender-error">
+        <!-- specifying label:  -->
+                    <label for="gender_prefer_not">Prefer not to say</label>
+                </li>
+            </ul>
+            
+            <div id="gender-error" class="error-message" role="alert" aria-live="assertive"></div>
+            
+          <!-- </div> -->
         </fieldset>
 
         <div class="control">
-          <input id="accept_agbs" name="accept_agbs" type="checkbox" value="1" />
+    <!-- to create a connection between the form field and the error message i added aria-describedby="terms-error"-->
+          <input id="accept_agbs" name="accept_agbs" type="checkbox" value="1"aria-describedby="terms-error" />
     <!-- specifying label:  -->
-          <label for="accept_agbs">I accept the terms and conditions</label>
+          <label for="accept_agbs">I accept the terms and conditions
+    <!-- adding a <span> for screen reader use-->
+            <span class="sr-only">Required field</span>
+          </label>
+    <!-- to make screen reader aware of the alret -->
+          <div id="terms-error" class="error-message" role="alert" aria-live="assertive"></div>
         </div>
         <div class="control">
-          <input name="validate" type="hidden" value="1" /><input type="submit" value="Register" />
+          <input name="validate" type="hidden" value="1" />
+    <!-- adding a <span> for screen reader use-->
+          <input type="submit" value="Register"/>
+          <span class="sr-only">Submit the feedback form</span>
         </div>
       </form>
       
