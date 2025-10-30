@@ -45,6 +45,22 @@ for improving accessibility with screen readers*/
             white-space: nowrap;
             border: 0;
     }
+    /* Button styling */
+        button[type="submit"] {
+            background-color: #005fcc;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        button[type="submit"]:focus {
+            background-color: #003380;
+            box-shadow: 0 0 0 3px rgba(0, 95, 204, 0.3);
+        }
+
 
   </style>
     </head>
@@ -53,7 +69,7 @@ for improving accessibility with screen readers*/
 
 <!-- Screen reader announcement for form status -->
     <div id="form-status" aria-live="polite" aria-atomic="true" class="sr-only"></div>
-    <form>
+    <form id="feedback-form">
 <!-- Announce form instructions for screen readers -->
       <div id="form-instructions" class="sr-only">
         This form has required fields marked with an asterisk  
@@ -149,8 +165,8 @@ https://www.w3schools.com/tags/tag_fieldset.asp -->
           <input name="validate" type="hidden" value="1" />
     <!-- adding a <span> for screen reader use-->
 
-      <button type="submit" id="submit-button">
-          <!-- <input type="submit" value="Register"/> -->
+      <button type="submit" id="submit-button" value="Register">
+          Register
           <span class="sr-only">Submit the feedback form</span>
         </button>
         </div>
