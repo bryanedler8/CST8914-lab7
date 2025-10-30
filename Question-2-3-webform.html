@@ -25,6 +25,13 @@
       margin: 0;
     }
 
+     /* Focus styles for better keyboard navigation */
+        input[type="radio"]:focus + label,
+        input[type="checkbox"]:focus + label {
+            outline: 2px solid #005fcc;
+            outline-offset: 2px;
+        }
+
 /*https://v1.tailwindcss.com/docs/screen-readers
 for improving accessibility with screen readers*/
     .sr-only {
@@ -141,8 +148,11 @@ https://www.w3schools.com/tags/tag_fieldset.asp -->
         <div class="control">
           <input name="validate" type="hidden" value="1" />
     <!-- adding a <span> for screen reader use-->
-          <input type="submit" value="Register"/>
+
+      <button type="submit" id="submit-button">
+          <!-- <input type="submit" value="Register"/> -->
           <span class="sr-only">Submit the feedback form</span>
+        </button>
         </div>
       </form>
       
